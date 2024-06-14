@@ -15,7 +15,7 @@ const internships = [
 ];
 function CompanyDashboard (){
   return (
-    <div className="bg-gray-200  w-[20em] p-4">
+    <div className="bg-gray-200  w-[40em] h-[70vh] p-4">
       <h1 className="text-2xl font-bold text-center underline text-sky-800 mb-6">Company Dashboard</h1>
       <div className="space-y-4">
         {internships.map((internship, index) => (

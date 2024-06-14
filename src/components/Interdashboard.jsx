@@ -16,7 +16,7 @@ const applications = [
 
 function InternDashboard () {
   return (
-    <div className="bg-gray-200 w-[20em]   p-4">
+    <div className="bg-gray-200 w-[40em] h-[70vh]  rounded-2xl   p-4">
       <h1 className="text-2xl font-bold text-center underline text-sky-800 mb-6">Intern Dashboard</h1>
       <div className="space-y-4">
         

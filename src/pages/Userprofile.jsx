@@ -8,7 +8,7 @@ const InternProfile = () => {
     address: 'kibera, city, Nairobi',
     university: 'University of Example',
     program: 'Computer Science',
-    graduationYear: '2023',
+    graduationyear: '2023',
     skills: ['JavaScript', 'HTML', 'CSS', 'React'],
     experience: {
       company: 'projects Inc.',
@@ -33,7 +33,7 @@ const InternProfile = () => {
 
     try {
       const response = await fetch('https://internsharp.onrender.com/api/auth/update/66682516f51ad08709603648', {
-        method: 'PUT',
+        method: 'patch',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -65,6 +65,8 @@ const InternProfile = () => {
               <strong className='text-green-600'>Name:</strong>
               <input type="text" name="name" value={profile.name} onChange={handleInputChange} className="ml-2 p-2 border rounded" />
             </p>
+
+            
             <p>
               <strong className='text-green-600'>Email:</strong>
               <input type="email" name="email" value={profile.email} onChange={handleInputChange} className="ml-2 p-2 border rounded" />
@@ -79,9 +81,15 @@ const InternProfile = () => {
             </p>
           </div>
         </div>
+
+        
         
         <div className="mb-6">
           <h2 className="text-lg text-sky-800 underline font-bold mb-2">Education</h2>
+          <p>
+              <strong className='text-green-600'>Apply Ur Resume:</strong>
+              <input type="file" name="name"  className="ml-2 p-2 border rounded" />
+            </p>
           <p>
             <strong className='text-green-600'>University:</strong>
             <input type="text" name="university" value={profile.university} onChange={handleInputChange} className="ml-2 p-2 border rounded" />
@@ -92,7 +100,7 @@ const InternProfile = () => {
           </p>
           <p>
             <strong className='text-green-600'>Graduation Year:</strong>
-            <input type="text" name="graduationYear" value={profile.graduationYear} onChange={handleInputChange} className="ml-2 p-2 border rounded" />
+            <input type="text" name="graduationYear" value={profile.graduationyear} onChange={handleInputChange} className="ml-2 p-2 border rounded" />
           </p>
         </div>
 
