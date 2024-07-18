@@ -6,7 +6,7 @@ import Home from "../pages/Home.jsx";
 import Internship from "../pages/Internship.jsx";
 import Userprofile from"../pages/Userprofile.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
-
+import Phonebook from "../pages/Phonebook.jsx";
 function Router() {
   return (
     <BrowserRouter>
@@ -16,7 +16,10 @@ function Router() {
         <Route path="/login" element={<Layout><Login /></Layout>} />
         <Route path="/internship" element={<Layout><Internship /></Layout>} />
         <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
-        <Route path="/profile" element={<Layout><Userprofile/></Layout>} />      </Routes>
+        <Route path="/profile" element={<Layout><Userprofile/></Layout>} />     
+        <Route path="/phonebook" element={<Layout><Phonebook/></Layout>} />
+        </Routes>
+
     </BrowserRouter>
   );
 }

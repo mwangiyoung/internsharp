@@ -43,6 +43,9 @@ function Nav() {
                   <Link to="/dashboard">
                     <li>Dashbard</li>
                   </Link>
+                  <Link to="/phonebook">
+                    <li>Phonebook</li>
+                  </Link>
                   <Link to="/" onClick={handleLogout} className="text-gray-800 hover:underline">
                     Logout
                   </Link>

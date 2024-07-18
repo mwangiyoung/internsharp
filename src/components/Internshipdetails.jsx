@@ -1,10 +1,10 @@
 import React from 'react';
 import { MdCancel } from "react-icons/md";
 
-function InternshipDetails ({ company,onclose })  {
- 
-
- 
+function InternshipDetails({ company, onClose }) {
+  const handleApply = () => {
+    alert('Successfully applied for the UX Designer Internship');
+  };
 
   return (
     <div className="bg-gray-200 w-[22em] mx-auto rounded-3xl mt-4 mb-4 h-[80vh] p-4">
@@ -12,7 +12,7 @@ function InternshipDetails ({ company,onclose })  {
       <div className="flex justify-between items-center mb-4">
         <button className="text-xl">&#8592;</button>
         <h1 className="text-xl text-sky-800 underline font-bold">Internship details</h1>
-        <MdCancel onClick={onclose} className="text-xl cursor-pointer" />
+        <MdCancel onClick={onClose} className="text-xl cursor-pointer" />
       </div>
 
       {/* Company Details */}
@@ -51,7 +51,10 @@ function InternshipDetails ({ company,onclose })  {
       </div>
 
       {/* Apply Button */}
-      <button className="bg-sky-800 text-white rounded-full px-6 py-2 mt-6 flex items-center justify-center w-full">
+      <button 
+        onClick={handleApply}
+        className="bg-sky-800 text-white rounded-full px-6 py-2 mt-6 flex items-center justify-center w-full"
+      >
         Apply
       </button>
     </div>
@@ -59,6 +62,7 @@ function InternshipDetails ({ company,onclose })  {
 };
 
 export default InternshipDetails;
+
 
 
 
