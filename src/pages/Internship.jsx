@@ -5,14 +5,18 @@ import {
   FaRegCalendarAlt,
   FaSearch,
 } from "react-icons/fa";
-import InternshipDetails from "../components/Internshipdetails";
-
+import InternshipDetails from "../components/Internshipdetails"
 // Function to fetch internships
 
 const InternshipPage = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [internships, setInternships] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [newInternship, setNewInternship] = useState({
+    title: "",
+    description: "",
+    company: "",
+  });
 
   useEffect(() => {
     async function fetchInternships() {
@@ -31,24 +35,54 @@ const InternshipPage = () => {
     setSelectedCompany(company);
   };
 
-  const filteredInternships =
-    
-    internships && internships.filter(
-      (internship) =>
-                internship.internshipTitle
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewInternship({ ...newInternship, [name]: value });
+  };
 
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase())
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "https://internsharp.onrender.com/api/internships",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newInternship),
+        }
+      );
+
+      if (response.ok) {
+        const createdInternship = await response.json();
+        setInternships([...internships, createdInternship]);
+        setNewInternship({ title: "", description: "", company: "" });
+        alert("Internship posted successfully");
+      } else {
+        alert("Failed to post internship");
+      }
+    } catch (error) {
+      console.error("Error posting internship:", error);
+      alert("Error posting internship");
+    }
+  };
+
+  const filteredInternships =
+    internships &&
+    internships.filter((internship) =>
+      internship.internshipTitle
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
     );
 
   return (
-    <div className="flex gap-[10em] items-center">
+    <div className="flex  gap-[10em] items-center">
+      <div className="flex  gap-[5em]">
       <div className="bg-gray-200 w-[50em] min-h-screen rounded-3xl mt-4 mb-4 ml-7 p-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl text-sky-800 underline font-bold">
-            Internship
-          </h1>
+          <h1 className="text-xl text-sky-800 underline font-bold">Internship</h1>
           <FaArrowRight className="text-xl" />
         </div>
 
@@ -75,9 +109,7 @@ const InternshipPage = () => {
               className="rounded-full w-12 h-12 mr-4"
             />
             <div>
-              <h2 className="text-lg text-green-600 font-bold">
-                Ivanov Daniil
-              </h2>
+              <h2 className="text-lg text-green-600 font-bold">Ivanov Daniil</h2>
               <p className="text-gray-500">KTmo 2-10</p>
             </div>
           </div>
@@ -147,6 +179,92 @@ const InternshipPage = () => {
             ))}
           </div>
         </div>
+        </div>
+
+        {/* Form to post internship */}
+        <div className="bg-gray-200  h-[70vh] rounded-3xl">
+        <div className="mt-6 bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-lg text-sky-800 underline font-bold mb-4">Post an Internship</h2>
+          <form onSubmit={handleFormSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Title</label>
+              <input
+                type="text"
+                name="internshiptitle"
+                value={newInternship.title}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Description</label>
+              <textarea
+                name="description"
+                value={newInternship.description}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              ></textarea>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Requirements</label>
+              <input
+                type="text"
+                name="requirements"
+                value={newInternship.company}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Company</label>
+              <input
+                type="text"
+                name="company"
+                value={newInternship.company}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">paid</label>
+              <input
+                type="text"
+                name="paid"
+                value={newInternship.company}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">companyid</label>
+              <input
+                type="text"
+                name="companyid"
+                value={newInternship.company}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-green-600 text-white py-2 px-4 rounded"
+            >
+              Post Internship
+            </button>
+          </form>
+        </div>
+        </div>
+      
       </div>
 
       <div>
@@ -157,3 +275,4 @@ const InternshipPage = () => {
 };
 
 export default InternshipPage;
+

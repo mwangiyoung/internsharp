@@ -11,6 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("erty")
     e.preventDefault();
     setError('');
 
