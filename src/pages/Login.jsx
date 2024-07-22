@@ -64,7 +64,7 @@ function Login() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen src/assets/bg-[url('images/pexels-quang-nguyen-vinh-222549-2176593.jpg')] bg-no-repeat bg-center bg-cover">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-[url('src/assets/images/pexels-sebastian-214574.jpg')] bg-no-repeat bg-center bg-cover">
       <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="relative z-10">
         <h1 className="text-3xl text-sky-900 font-bold mb-8">Login</h1>

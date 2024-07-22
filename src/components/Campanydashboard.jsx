@@ -1,6 +1,5 @@
 // CompanyDashboard.js
 import React from 'react';
-import PostInternship from './Post internship';
 
 const internships = [
   {
@@ -33,7 +32,6 @@ function CompanyDashboard (){
           </div>
         ))}
       </div>
-      <PostInternship/>
     </div>
   );
 };
